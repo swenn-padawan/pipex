@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:50:30 by stetrel           #+#    #+#             */
-/*   Updated: 2024/11/28 16:09:52 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/09 18:24:14 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strsjoin(int free_flag, int size, char *start, ...);
 char	*ft_itoa(int n);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);

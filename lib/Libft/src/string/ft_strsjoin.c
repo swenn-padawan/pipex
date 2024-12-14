@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strsjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:56:37 by stetrel           #+#    #+#             */
-/*   Updated: 2024/11/28 16:03:02 by stetrel          ###   ########.fr       */
+/*   Created: 2024/12/09 18:14:47 by stetrel           #+#    #+#             */
+/*   Updated: 2024/12/09 18:34:09 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pipex.h>
+#include <libft.h>
+#include <stdarg.h>
 
-void	error_message(int error)
+char	*ft_strsjoin(int free_flag, int size, char *start, ...)
 {
-	if (error == TOO_FEW_ARGS)
+	char	*str;
+	va_list	list;
+
+	va_start(list, start);
+	str = start;
+	while (size - 1)
 	{
-		write(2, "Error: too few args provided!\n", 30);
-		exit(1);
+		str = ft_strjoin(str, va_arg(list, char *));
+		if (free_flag == 0)
+			free(va_arg(list, char *));
+		free_flag--;
+		size--;
 	}
-	if (error == NO_PATH_FOUND)
-	{
-		write(2, "Error: No path found!\n", 22);
-		exit(1);
-	}
-	if (error == NO_FILES)
-	{
-		write(2, "Error: File don't exist!\n", 24);
-		exit(1);
-	}
+	return (str);
 }
