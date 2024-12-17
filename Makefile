@@ -6,7 +6,7 @@
 #    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 02:24:32 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/17 10:47:00 by swenn            ###   ########.fr        #
+#    Updated: 2024/12/17 15:53:27 by swenn            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,7 @@ fclean: clean
 	@echo "$(RED)$(NAME) removed"
 	@make fclean -C $(LIBFT_PATH) -s
 	@$(RM) $(NAME)
-	@$(RM) $(NAME_BONUS)
-	@echo "$(RED)$(NAME_BONUS) removed"
+
 
 re:
 	@$(MAKE) fclean

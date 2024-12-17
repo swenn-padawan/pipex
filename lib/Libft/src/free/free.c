@@ -6,18 +6,16 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:08:35 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/09 18:17:23 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/17 15:43:41 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	free_strs(char **strs)
+void	free2dptr(void **adress)
 {
-	int	i;
-
-	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
+	int	i = 0;
+	while (adress[i])
+		free(adress[i++]);
+	free(adress);
 }
