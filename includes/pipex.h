@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:14:51 by stetrel           #+#    #+#             */
-/*   Updated: 2024/11/28 16:02:57 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/17 09:00:51 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ enum	e_error
 	TOO_FEW_ARGS = 1,
 	NO_PATH_FOUND,
 	NO_PERMS,
-	NO_FILES
+	NO_FILES,
+	NO_COMMAND_FOUND
 };
+
+
+//PARSING
+char	*pipex_cmd_args(char **argv, char **envp);
 
 //ERROR
 void	error_message(int error);

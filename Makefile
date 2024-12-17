@@ -6,7 +6,7 @@
 #    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 02:24:32 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/14 17:15:46 by stetrel          ###   ########.fr        #
+#    Updated: 2024/12/17 10:47:00 by swenn            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ IFLAGS		:= -I ./includes
 
 SRCS		:= main.c \
 			   error.c \
+			   parsing/pipex_parsing.c \
 
 SRCS		:= $(addprefix $(SRCS_DIR)/, $(SRCS))
 
@@ -37,7 +38,7 @@ DIR_UP		= mkdir -p $(@D)
 
 LIBFT_PATH	= ./lib/Libft
 
-MAKEFLAGS   +=	--no-print-directory
+MAKEFLAGS	+= --no-print-directory
 
 ################################################################################
 
@@ -62,15 +63,29 @@ clean:
 	@$(RM) $(OBJS_DIR)
 	@$(RM) $(OBJS)
 	@make clean -C $(LIBFT_PATH) -s
+	@echo "$(RED)objs removed$(RESET)"
+	@echo "$(RED)Libft objs removed$(RESET)"
 
 fclean: clean
+	@echo "$(RED)$(NAME) removed"
 	@make fclean -C $(LIBFT_PATH) -s
 	@$(RM) $(NAME)
 	@$(RM) $(NAME_BONUS)
+	@echo "$(RED)$(NAME_BONUS) removed"
 
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+################################################################################
+
+RED			= \033[31;49;1m
+
+YELLOW		= \033[0;33m
+
+GREEN		= \033[0;32m
+
+RESET		= \033[0m
 
 ################################################################################
 

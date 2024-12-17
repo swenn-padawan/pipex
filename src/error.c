@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:56:37 by stetrel           #+#    #+#             */
-/*   Updated: 2024/11/28 16:03:02 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/17 08:52:58 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	error_message(int error)
 	if (error == NO_FILES)
 	{
 		write(2, "Error: File don't exist!\n", 24);
+		exit(1);
+	}
+	if (error == NO_COMMAND_FOUND)
+	{
+		write(2, "Error: Command not found!\n", 26);
 		exit(1);
 	}
 }
