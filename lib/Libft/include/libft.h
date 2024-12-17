@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:50:30 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/17 15:44:33 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/17 18:42:54 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 
 //MALLOC
-void				push(void *malloc_address);
+void				push(void *malloc_address, char type);
 
 //FREE
 void				free2dptr(void **adress);

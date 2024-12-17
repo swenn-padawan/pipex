@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:14:47 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/17 10:44:48 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/17 18:43:21 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strsjoin(int size, char *start, ...)
 	{
 		next = va_arg(list, char *);
 		str = ft_strjoin(str, next);
-		push(str);
+		push(str, 0);
 		if (!*str)
 		{
 			free(tmp);
