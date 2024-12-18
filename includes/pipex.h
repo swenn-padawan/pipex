@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:14:51 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/18 00:30:54 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/18 15:39:07 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ enum	e_error
 	NO_PATH_FOUND,
 	NO_PERMS,
 	NO_FILES,
-	NO_COMMAND_FOUND
+	NO_COMMAND_FOUND,
+	FAILED_FILES_CREATION
 };
 
 
