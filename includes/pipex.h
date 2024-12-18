@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:14:51 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/17 09:00:51 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/18 00:30:54 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ enum	e_error
 
 
 //PARSING
-char	*pipex_cmd_args(char **argv, char **envp);
+char	*pipex_cmd_args(char *cmd, char **envp);
 
 //ERROR
 void	error_message(int error);

@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:14:47 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/17 18:43:21 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/18 01:53:10 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strsjoin(int size, char *start, ...)
 		if (!*str)
 		{
 			free(tmp);
-			break;
+			break ;
 		}
 	}
 	return (str);
