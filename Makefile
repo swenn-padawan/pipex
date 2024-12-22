@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
+#    By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 02:24:32 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/17 15:53:27 by swenn            ###   ########.fr        #
+#    Updated: 2024/12/22 23:51:17 by jlorette         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ IFLAGS		:= -I ./includes
 SRCS		:= main.c \
 			   error.c \
 			   parsing/pipex_parsing.c \
+			   process/process.c \
 
 SRCS		:= $(addprefix $(SRCS_DIR)/, $(SRCS))
 
