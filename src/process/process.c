@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:48:25 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/23 00:08:12 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:48:27 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	setup_pipe(int pipefd[2])
 		error_message(1);
 }
 
-static void	execute_command(char *cmd, char **cmd_args, char **envp,
+static void	execute_command(t_cmd cmd, char **envp,
 	int in_fd, int out_fd)
 {
 	dup2(in_fd, STDIN_FILENO);
 	dup2(out_fd, STDOUT_FILENO);
 	close(in_fd);
 	close(out_fd);
-	execve(cmd, cmd_args, envp);
+	execve(cmd.cmd, cmd.cmd_args, envp);
 	perror("execve failed");
 	exit(EXIT_FAILURE);
 }
@@ -36,39 +36,37 @@ static void	execute_command(char *cmd, char **cmd_args, char **envp,
 void	first_child_process(char **argv, char **envp, int pipefd[2])
 {
 	int		infile;
-	char	*cmd;
-	char	**cmd_args;
+	t_cmd	cmd;
 
 	infile = open(argv[1], O_RDONLY);
 	if (infile == -1)
 		error_message(NO_FILES);
-	cmd_args = ft_split(argv[2], ' ');
-	if (!cmd_args)
+	cmd.cmd_args = ft_split(argv[2], ' ');
+	if (!cmd.cmd_args)
 		exit(EXIT_FAILURE);
-	cmd = pipex_cmd_args(cmd_args[0], envp);
-	if (!cmd)
+	cmd.cmd = pipex_cmd_args(cmd.cmd_args[0], envp);
+	if (!cmd.cmd)
 		error_message(NO_COMMAND_FOUND);
 	close(pipefd[0]);
-	execute_command(cmd, cmd_args, envp, infile, pipefd[1]);
+	execute_command(cmd, envp, infile, pipefd[1]);
 }
 
 void	second_child_process(char **argv, char **envp, int pipefd[2])
 {
 	int		outfile;
-	char	*cmd;
-	char	**cmd_args;
+	t_cmd	cmd;
 
 	outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (outfile == -1)
 		error_message(FAILED_FILES_CREATION);
-	cmd_args = ft_split(argv[3], ' ');
-	if (!cmd_args)
+	cmd.cmd_args = ft_split(argv[3], ' ');
+	if (!cmd.cmd_args)
 		exit(EXIT_FAILURE);
-	cmd = pipex_cmd_args(cmd_args[0], envp);
-	if (!cmd)
+	cmd.cmd = pipex_cmd_args(cmd.cmd_args[0], envp);
+	if (!cmd.cmd)
 		error_message(NO_COMMAND_FOUND);
 	close(pipefd[1]);
-	execute_command(cmd, cmd_args, envp, pipefd[0], outfile);
+	execute_command(cmd, envp, pipefd[0], outfile);
 }
 
 void	wait_for_children(pid_t pid1, pid_t pid2)
