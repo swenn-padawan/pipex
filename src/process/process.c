@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:48:25 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/26 15:48:27 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/26 17:18:36 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void	second_child_process(char **argv, char **envp, int pipefd[2])
 	if (outfile == -1)
 		error_message(FAILED_FILES_CREATION);
 	cmd.cmd_args = ft_split(argv[3], ' ');
+	push(cmd.cmd_args, 1);
 	if (!cmd.cmd_args)
 		exit(EXIT_FAILURE);
 	cmd.cmd = pipex_cmd_args(cmd.cmd_args[0], envp);
+	push(cmd.cmd, 0);
 	if (!cmd.cmd)
 		error_message(NO_COMMAND_FOUND);
 	close(pipefd[1]);
