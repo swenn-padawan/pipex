@@ -6,7 +6,7 @@
 #    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 21:59:22 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/09 18:16:29 by stetrel          ###   ########.fr        #
+#    Updated: 2024/12/27 08:25:45 by stetrel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,17 +61,15 @@ SRCS	:=		ctype/ft_isalpha.c \
 				memory/ft_bzero.c \
 				malloc/free_manager.c \
 				free/free.c \
-
-
-SRCS_BONUS 		:= 	lists/ft_lstnew.c \
-			  		lists/ft_lstadd_front.c \
-			  		lists/ft_lstsize.c \
-			  		lists/ft_lstlast.c \
-			  		lists/ft_lstadd_back.c \
-			  		lists/ft_lstdelone.c \
-			  		lists/ft_lstclear.c \
-			  		lists/ft_lstiter.c \
-			  		lists/ft_lstmap.c \
+				lists/ft_lstnew.c \
+			  	lists/ft_lstadd_front.c \
+				lists/ft_lstsize.c \
+				lists/ft_lstlast.c \
+			  	lists/ft_lstadd_back.c \
+				lists/ft_lstdelone.c \
+				lists/ft_lstclear.c \
+		  		lists/ft_lstiter.c \
+		  		lists/ft_lstmap.c \
 
 SRCS	:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 

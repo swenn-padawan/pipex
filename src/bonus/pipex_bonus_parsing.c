@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsjoin.c                                      :+:      :+:    :+:   */
+/*   pipex_bonus_parsing.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 18:14:47 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 06:33:11 by stetrel          ###   ########.fr       */
+/*   Created: 2024/12/27 07:15:09 by stetrel           #+#    #+#             */
+/*   Updated: 2024/12/27 10:01:02 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdarg.h>
+#include <pipex_bonus.h>
 
-char	*ft_strsjoin(int size, char *start, ...)
+t_list	*ft_list_init(int argc, char **argv)
 {
-	va_list	list;
-	char	*str;
-	char	*tmp;
-	char	*next;
+	int		i;
+	t_list	*lst;
+	t_list	*tmp;
 
-	str = start;
-	va_start(list, start);
-	tmp = str;
-	while (--size)
+	i = 0;
+	lst = NULL;
+	argv++;
+	while (i < argc)
 	{
-		next = va_arg(list, char *);
-		str = ft_strjoin(str, next);
-		push(str, 0);
-		if (!*str)
-		{
-			free(tmp);
-			break ;
-		}
+		tmp = ft_lstnew(argv[i]);
+		push(tmp, 0);
+		ft_lstadd_back(&lst, tmp);
+		i++;
 	}
-	va_end(list);
-	return (str);
+	return (lst);
 }

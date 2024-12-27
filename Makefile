@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+         #
+#    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/17 02:24:32 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/22 23:51:17 by jlorette         ###   ########.fr        #
+#    Created: 2024/12/27 04:41:18 by stetrel           #+#    #+#              #
+#    Updated: 2024/12/27 09:29:20 by stetrel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,13 @@ include pimp_makefile.mk
 
 NAME		:= pipex
 
+NAME_BONUS	:= pipex_bonus
+
 SRCS_DIR	:= src
 
 OBJS_DIR	:= .objs
+
+BONUS_DIR	:= bonus
 
 CC			:= cc
 
@@ -29,9 +33,18 @@ SRCS		:= main.c \
 			   parsing/pipex_parsing.c \
 			   process/process.c \
 
-SRCS		:= $(addprefix $(SRCS_DIR)/, $(SRCS))
+SRCS_BONUS	:= bonus/main_bonus.c \
+			   bonus/pipex_bonus_parsing.c \
+			   error.c \
+			   bonus/utils_bonus.c \
+
+SRCS_BONUS	:= $(addprefix $(SRCS_DIR)/, $(SRCS_BONUS))
+
+SRCS	:= $(addprefix $(SRCS_DIR)/, $(SRCS))
 
 OBJS		:= $(addprefix $(OBJS_DIR)/, $(SRCS:%.c=%.o))
+
+OBJS_BONUS	:= $(addprefix $(OBJS_DIR)/, $(SRCS_BONUS:%.c=%.o))
 
 RM			:= rm -rf
 
@@ -63,14 +76,18 @@ $(LIBFT_PATH)/libft.a:
 clean:
 	@$(RM) $(OBJS_DIR)
 	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_BONUS)
 	@make clean -C $(LIBFT_PATH) -s
 	@echo "$(RED)objs removed$(RESET)"
+	@echo "$(RED)objs bonus removed$(RESET)"
 	@echo "$(RED)Libft objs removed$(RESET)"
 
 fclean: clean
 	@echo "$(RED)$(NAME) removed"
+	@echo "$(RED)$(NAME_BONUS) removed"
 	@make fclean -C $(LIBFT_PATH) -s
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
 
 
 re:
@@ -79,7 +96,7 @@ re:
 
 ################################################################################
 
-RED			= \033[31;49;1m
+RED			= \033[31;49m
 
 YELLOW		= \033[0;33m
 

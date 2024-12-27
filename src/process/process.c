@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 23:48:25 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/26 17:18:36 by swenn            ###   ########.fr       */
+/*   Created: 2024/12/27 05:16:50 by stetrel           #+#    #+#             */
+/*   Updated: 2024/12/27 06:40:38 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <pipex.h>
-#include <unistd.h>
-#include <sys/wait.h>
 
 void	setup_pipe(int pipefd[2])
 {
@@ -51,12 +48,12 @@ void	first_child_process(char **argv, char **envp, int pipefd[2])
 	execute_command(cmd, envp, infile, pipefd[1]);
 }
 
-void	second_child_process(char **argv, char **envp, int pipefd[2])
+void	second_child_process(int argc, char **argv, char **envp, int pipefd[2])
 {
 	int		outfile;
 	t_cmd	cmd;
 
-	outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	outfile = open(argv[argc -1], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (outfile == -1)
 		error_message(FAILED_FILES_CREATION);
 	cmd.cmd_args = ft_split(argv[3], ' ');

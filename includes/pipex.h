@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 12:14:51 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/26 15:52:08 by swenn            ###   ########.fr       */
+/*   Created: 2024/12/27 05:16:01 by stetrel           #+#    #+#             */
+/*   Updated: 2024/12/27 10:01:19 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/wait.h>
 # include <unistd.h>
 
 enum		e_error
@@ -26,7 +27,8 @@ enum		e_error
 	NO_PERMS,
 	NO_FILES,
 	NO_COMMAND_FOUND,
-	FAILED_FILES_CREATION
+	FAILED_FILES_CREATION,
+	FORK_FAILED
 };
 
 typedef struct s_cmd
@@ -35,16 +37,17 @@ typedef struct s_cmd
 	char	**cmd_args;
 }			t_cmd;
 
-//PARSING
+// PARSING
 char		*pipex_cmd_args(char *cmd, char **envp);
 
-//ERROR
+// ERROR
 void		error_message(int error);
 
-//PROCESS
+// PROCESS
 void		setup_pipe(int pipefd[2]);
 void		first_child_process(char **argv, char **envp, int pipefd[2]);
-void		second_child_process(char **argv, char **envp, int pipefd[2]);
+void		second_child_process(int argc, char **argv, char **envp,
+				int pipefd[2]);
 void		wait_for_children(pid_t pid1, pid_t pid2);
 
 #endif

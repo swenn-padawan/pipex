@@ -6,12 +6,11 @@
 /*   By: swenn <swenn@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:58:52 by swenn             #+#    #+#             */
-/*   Updated: 2024/12/26 17:10:53 by swenn            ###   ########.fr       */
+/*   Updated: 2024/12/27 06:52:19 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
-#include <unistd.h>
 
 static char	**pipex_parsing(char **envp)
 {
@@ -33,6 +32,8 @@ char	*pipex_cmd_args(char *cmd, char **envp)
 
 	if (!cmd || !envp || !*envp)
 		exit(EXIT_FAILURE);
+	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0)
+		return (cmd);
 	cmd_path = pipex_parsing(envp);
 	i = 0;
 	while (cmd_path[i])

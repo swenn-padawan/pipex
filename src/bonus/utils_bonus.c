@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsjoin.c                                      :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 18:14:47 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 06:33:11 by stetrel          ###   ########.fr       */
+/*   Created: 2024/12/27 09:21:36 by stetrel           #+#    #+#             */
+/*   Updated: 2024/12/27 10:00:55 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdarg.h>
+#include <pipex_bonus.h>
 
-char	*ft_strsjoin(int size, char *start, ...)
+int	get_outfile(t_list *lst)
 {
-	va_list	list;
-	char	*str;
-	char	*tmp;
-	char	*next;
+	int	fd;
 
-	str = start;
-	va_start(list, start);
-	tmp = str;
-	while (--size)
-	{
-		next = va_arg(list, char *);
-		str = ft_strjoin(str, next);
-		push(str, 0);
-		if (!*str)
-		{
-			free(tmp);
-			break ;
-		}
-	}
-	va_end(list);
-	return (str);
+	while (lst->next)
+		lst = lst->next;
+	fd = open(lst->content, O_RDONLY);
+	if (fd == -1)
+		error_message(FAILED_FILES_CREATION);
+	return (fd);
 }
