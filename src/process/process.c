@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 05:16:50 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 06:40:38 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/29 11:35:41 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	setup_pipe(int pipefd[2])
 		error_message(1);
 }
 
-static void	execute_command(t_cmd cmd, char **envp,
+void	execute_command(t_cmd cmd, char **envp,
 	int in_fd, int out_fd)
 {
 	dup2(in_fd, STDIN_FILENO);

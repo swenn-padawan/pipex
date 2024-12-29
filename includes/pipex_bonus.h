@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 04:43:10 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 10:00:34 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/29 11:44:04 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PIPEX_BONUS_H
 
 # include <pipex.h>
-# include <sys/types.h>
 
 typedef struct s_pipex
 {
@@ -26,5 +25,6 @@ typedef struct s_pipex
 
 t_list		*ft_list_init(int argc, char **argv);
 int			get_outfile(t_list *lst);
+void execute_pipeline(char **argv, int argc, char **envp);
 
 #endif

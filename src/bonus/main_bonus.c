@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 04:42:10 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 17:01:54 by stetrel          ###   ########.fr       */
+/*   Updated: 2024/12/29 11:49:21 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ char	**check_args(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_list	*lst;
-	t_pipex	pipex;
-
 	envp = check_args(argc, argv, envp);
-	lst = ft_list_init(argc, argv);
-	pipex.infile = open(lst->content, O_RDONLY);
-	if (pipex.infile == -1)
-		error_message(NO_FILES);
-	pipex.outfile = get_outfile(lst);
-	//while de pipex en parcourant la liste chainees
+	execute_pipeline(argv, argc, envp);
 }
