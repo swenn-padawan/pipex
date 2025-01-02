@@ -6,7 +6,7 @@
 #    By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/27 04:41:18 by stetrel           #+#    #+#              #
-#    Updated: 2024/12/29 11:35:51 by swenn            ###   ########.fr        #
+#    Updated: 2025/01/02 13:17:49 by stetrel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,12 @@ SRCS		:= main.c \
 
 SRCS_BONUS	:= bonus/main_bonus.c \
 			   bonus/pipex_bonus_parsing.c \
-			   error.c \
+			   bonus/init_bonus.c \
 			   bonus/utils_bonus.c \
 			   bonus/exec_bonus.c \
+			   bonus/handle_bonus.c \
 			   process/process.c \
+			   error.c \
 			   parsing/pipex_parsing.c \
 
 SRCS_BONUS	:= $(addprefix $(SRCS_DIR)/, $(SRCS_BONUS))

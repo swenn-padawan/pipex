@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 09:21:36 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/27 10:00:55 by stetrel          ###   ########.fr       */
+/*   Updated: 2025/01/02 13:07:48 by stetrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,25 @@ int	get_outfile(t_list *lst)
 	if (fd == -1)
 		error_message(FAILED_FILES_CREATION);
 	return (fd);
+}
+
+void cleanup_resources(int **pipefds, pid_t *pids, int num_cmds)
+{
+	int	i;
+
+	i = 0;
+    while (i < num_cmds - 1)
+    {
+        close(pipefds[i][0]);
+        close(pipefds[i][1]);
+		i++;
+    }
+	i = 0;
+    while (i < num_cmds)
+		waitpid(pids[i++], NULL, 0);
+	i = 0;
+    while (i < num_cmds - 1)
+        free(pipefds[i++]);
+    free(pipefds);
+    free(pids);
 }
