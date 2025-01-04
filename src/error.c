@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:56:37 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/04 11:05:14 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 11:35:21 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	message(char *msg)
 {
-	static int	flag;
+	static int	flag = 0;
 
-	flag = 0;
 	if (flag == 0)
 		write(2, msg, ft_strlen(msg));
 	flag = 1;
