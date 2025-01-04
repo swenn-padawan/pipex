@@ -6,7 +6,7 @@
 /*   By: swenn <swenn@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:58:52 by swenn             #+#    #+#             */
-/*   Updated: 2024/12/27 06:52:19 by stetrel          ###   ########.fr       */
+/*   Updated: 2025/01/04 11:23:24 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	**pipex_parsing(char **envp)
 	while (*envp && ft_strncmp(*envp, "PATH=", 5))
 		envp++;
 	if (!*envp)
-		exit(EXIT_FAILURE);
+		error_message(NO_PATH_FOUND);
 	cmd_path = ft_split(*envp, ':');
 	return (cmd_path);
 }

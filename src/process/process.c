@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 05:16:50 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/01 14:47:34 by stetrel          ###   ########.fr       */
+/*   Updated: 2025/01/04 11:23:42 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	first_child_process(char **argv, char **envp, int pipefd[2])
 	if (infile == -1)
 		error_message(NO_FILES);
 	cmd.cmd_args = ft_split(argv[2], ' ');
+	push(cmd.cmd_args, 1);
 	if (!cmd.cmd_args)
 		exit(EXIT_FAILURE);
 	cmd.cmd = pipex_cmd_args(cmd.cmd_args[0], envp);
