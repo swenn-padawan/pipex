@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:50:30 by stetrel           #+#    #+#             */
-/*   Updated: 2024/12/17 18:42:54 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 14:20:59 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void				push(void *malloc_address, char type);
 
 //FREE
 void				free2dptr(void **adress);
+void				free2dintptr(int **tab, int size);
 
 #endif

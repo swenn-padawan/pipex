@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 05:16:01 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/04 11:22:27 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:45:34 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char		*pipex_cmd_args(char *cmd, char **envp);
 void		error_message(int error);
 
 // PROCESS
-void	setup_pipe(int pipefd[2]);
-void	execute_command(t_cmd cmd, char **envp, int in_fd, int out_fd);
-void	first_child_process(char **argv, char **envp, int pipefd[2]);
-void	second_child_process(int argc, char **argv, char **envp,
+void		setup_pipe(int pipefd[2]);
+void		execute_command(t_cmd cmd, char **envp, int in_fd, int out_fd);
+void		first_child_process(char **argv, char **envp, int pipefd[2]);
+void		second_child_process(int argc, char **argv, char **envp,
 				int pipefd[2]);
-void	wait_for_children(pid_t pid1, pid_t pid2);
+void		wait_for_children(pid_t pid1, pid_t pid2);
 
 #endif

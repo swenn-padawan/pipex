@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 04:42:10 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/04 11:33:32 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:47:32 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ char	**check_args(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	envp = check_args(argc, argv, envp);
-	execute_pipeline(argv, argc, envp);
+	t_env	env;
+
+	env.envp = check_args(argc, argv, envp);
+	env.argv = argv;
+	execute_pipeline(env, argc);
+	return (0);
 }

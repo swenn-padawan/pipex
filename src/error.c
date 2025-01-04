@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:56:37 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/04 11:35:21 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:50:36 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ void	error_message(int error)
 	else if (error == NO_FILES)
 		message("Error: File don't exist!\n");
 	else if (error == NO_COMMAND_FOUND)
+	{
 		message("Error: Command not found!\n");
+		exit(127);
+	}
 	else if (error == FAILED_FILES_CREATION)
 		message("Error: Failed file's creation\n");
 	else if (error == FORK_FAILED)
 		message("Error: A Fork Have Failed!\n");
-	exit(0);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: stetrel <stetrel@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 05:16:50 by stetrel           #+#    #+#             */
-/*   Updated: 2025/01/04 11:23:42 by swenn            ###   ########.fr       */
+/*   Updated: 2025/01/04 12:35:31 by swenn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	second_child_process(int argc, char **argv, char **envp, int pipefd[2])
 	outfile = open(argv[argc -1], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (outfile == -1)
 		error_message(FAILED_FILES_CREATION);
+	wait(NULL);
 	cmd.cmd_args = ft_split(argv[3], ' ');
 	push(cmd.cmd_args, 1);
 	if (!cmd.cmd_args)
